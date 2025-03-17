@@ -15,6 +15,9 @@ spring:
     password: asdQWE123$
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+server:
+  port: 8080
+
 ---
 spring:
   config:
@@ -25,6 +28,10 @@ spring:
     username: myuser
     password: asdQWE123$
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 80  # HTTP 포트로 변경
+  address: 0.0.0.0  # 모든 IP에서 접근 가능하도록 설정
 
 ---
 spring:

@@ -1,0 +1,20 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://172.31.5.76:3306/mydb?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=CONVERT_TO_NULL
+    username: myuser
+    password: asdQWE123$
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8080  # HTTP 전용
+  address: 0.0.0.0  # 모든 IP에서 접근 가능하도록 설정
+#  ssl:
+#    enabled: true
+#    key-store: file:/etc/letsencrypt/live/ec2-3-25-73-211.ap-southeast-2.compute.amazonaws.com/fullchain.pem
+#    key-store-password: your_password
+#    key-store-type: PKCS12
+#    key-alias: tomcat
+#    key-password: your_password

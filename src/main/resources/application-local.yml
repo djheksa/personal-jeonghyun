@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:mysql://ec2-3-25-73-211.ap-southeast-2.compute.amazonaws.com:3306/mydb?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=CONVERT_TO_NULL
+    username: myuser
+    password: asdQWE123$
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8080
+  address: 0.0.0.0  # 모든 IP에서 접근 가능
