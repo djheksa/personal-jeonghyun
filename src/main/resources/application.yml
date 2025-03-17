@@ -10,7 +10,7 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:mysql://3.25.73.211:3306/mydb?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://ec2-3-25-73-211.ap-southeast-2.compute.amazonaws.com:3306/mydb?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=CONVERT_TO_NULL
     username: myuser
     password: asdQWE123$
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,7 +21,7 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:mysql://172.31.5.76:3306/mydb?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://172.31.5.76:3306/mydb?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=CONVERT_TO_NULL
     username: myuser
     password: asdQWE123$
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -32,6 +32,3 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
