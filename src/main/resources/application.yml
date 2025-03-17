@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: ojh
+  profiles:
+    active: local  # 기본적으로 로컬 환경을 사용하도록 설정
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:mysql://3.25.73.211:3306/mydb?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: myuser
+    password: asdQWE123$
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://172.31.5.76:3306/mydb?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: myuser
+    password: asdQWE123$
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+---
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
