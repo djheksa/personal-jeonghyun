@@ -1,41 +1,23 @@
 spring:
-  application:
-    name: ojh
-  profiles:
-    active: local  # 기본적으로 로컬 환경을 사용하도록 설정
-
+    application:
+        name: ojh
+    profiles:
+        active: local  # 기본적으로 로컬 환경을 사용하도록 설정
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
 ---
-spring:
-  config:
-    activate:
-      on-profile: local
-  datasource:
-    url: jdbc:mysql://ec2-3-25-73-211.ap-southeast-2.compute.amazonaws.com:3306/mydb?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=CONVERT_TO_NULL
-    username: myuser
-    password: asdQWE123$
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-server:
-  port: 8080
-
+auth:
+    password: ${AUTH_PASSWORD}
+    jwt-secret: ${AUTH_JWT_SECRET}
+    token-expiration: 1800
 ---
-spring:
-  config:
-    activate:
-      on-profile: prod
-  datasource:
-    url: jdbc:mysql://172.31.5.76:3306/mydb?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=CONVERT_TO_NULL
-    username: myuser
-    password: asdQWE123$
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-server:
-  port: 80  # HTTP 포트로 변경
-  address: 0.0.0.0  # 모든 IP에서 접근 가능하도록 설정
-
----
-spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+springdoc:
+    swagger-ui:
+        path: /docs         # Swagger UI 접근 경로 변경
+        display-request-duration: true
+        syntax-highlight:
+            theme: monokai
+    api-docs:
+        path: /docs-json

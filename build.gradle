@@ -24,27 +24,36 @@ repositories {
 }
 
 dependencies {
-//	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
-//	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
-//	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-//	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-//	implementation 'org.springframework.session:spring-session-data-redis'
-//	implementation 'org.springframework.session:spring-session-jdbc'
-//	implementation 'com.h2database:h2'  // H2 데이터베이스 추가
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	implementation 'mysql:mysql-connector-java:8.0.33'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'io.projectreactor:reactor-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+//	implementation ("org.springframework.boot:spring-boot-starter-data-jdbc") // JDBC
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa") // JPA
+//	implementation ("org.springframework.boot:spring-boot-starter-data-redis-reactive") // Redis Reactive
+//	implementation ("org.springframework.boot:spring-boot-starter-data-rest") // REST API
+//	implementation ("org.springframework.boot:spring-boot-starter-oauth2-client") // OAuth2 Client
+	implementation("org.springframework.boot:spring-boot-starter-security") // 인증/인가
+	implementation("org.springframework.boot:spring-boot-starter-web") // 동기 웹
+	implementation("org.springframework.boot:spring-boot-starter-webflux") // 비동기 웹
+//	implementation ("org.springframework.session:spring-session-data-redis") // Redis 세션 저장소
+//	implementation ("org.springframework.session:spring-session-jdbc") // JDBC 세션 저장소
+//	implementation ("com.h2database:h2")  // H2 데이터베이스
+	implementation("mysql:mysql-connector-java:8.0.33") // MySQL 데이터베이스
+	implementation("io.jsonwebtoken:jjwt:0.9.1")                                      // JWT (토큰 생성/검증)
+	implementation("org.springframework.boot:spring-boot-starter-validation")        // @Valid, @Validated 등
+	implementation("org.springframework.boot:spring-boot-starter-actuator")          // 헬스체크 등 (옵션)
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0") // Swagger UI
+
+	compileOnly("org.projectlombok:lombok")
+
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	annotationProcessor("org.projectlombok:lombok")
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.projectreactor:reactor-test")
+	testImplementation("org.springframework.security:spring-security-test")
+
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
 }
 
 tasks.named('test') {
