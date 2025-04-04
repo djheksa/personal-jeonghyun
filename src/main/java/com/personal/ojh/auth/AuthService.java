@@ -3,7 +3,10 @@ package com.personal.ojh.auth;
 import com.personal.ojh.auth.dto.AccessTokenResponseDto;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -28,11 +31,13 @@ public class AuthService {
 		Date now = new Date();
 		Date expiry = new Date(now.getTime() + authProps.getTokenExpiration() * 1000);
 
+		SecretKey key = Keys.hmacShaKeyFor(authProps.getJwtSecret().getBytes(StandardCharsets.UTF_8));
+
 		return Jwts.builder()
-			.setSubject("single-user")  // 고정 유저
+			.setSubject("single-user")
+			.signWith(key, SignatureAlgorithm.HS256)
 			.setIssuedAt(now)
 			.setExpiration(expiry)
-			.signWith(SignatureAlgorithm.HS256, authProps.getJwtSecret())
 			.compact();
 	}
 
